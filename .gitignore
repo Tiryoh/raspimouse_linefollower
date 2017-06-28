@@ -1,3 +1,7 @@
+dev/
+
+### https://raw.github.com/github/gitignore/c0c1a480a906df0e023f3250cf2ad82f1612be67/Python.gitignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -43,7 +47,7 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
-*.cover
+*,cover
 .hypothesis/
 
 # Translations
@@ -97,5 +101,4 @@ ENV/
 # mkdocs documentation
 /site
 
-# mypy
-.mypy_cache/
+
