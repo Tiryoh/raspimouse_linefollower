@@ -8,7 +8,7 @@ def getLineSensorData():
         return map(int, f.readline().split())
 
 if __name__ == '__main__':
-    while 1: #無限ループ
+    while True: #無限ループ
         left_end, left, right, right_end = getLineSensorData()
         print(left, right)
         diff = left - right #内側の2つのセンサ値の差分を取得
