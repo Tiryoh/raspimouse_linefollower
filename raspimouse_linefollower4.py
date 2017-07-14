@@ -42,11 +42,11 @@ if __name__ == '__main__':
         # センサ値を取得
         left_end, left, right, right_end = get_line_sensor_data()
         # 内側の2つセンサ値を補正・比較
-        diff1 = (correct_seneor_value(left, left_min, left_max) - correct_seneor_value(right, right_min, right_max))/2
+        diff1 = correct_seneor_value(left, left_min, left_max) - correct_seneor_value(right, right_min, right_max)
         # 外側の2つセンサ値を補正・比較
-        diff2 = (correct_seneor_value(left_end, left_end_min, left_end_max) - correct_seneor_value(right_end, right_end_min, right_end_max))
+        diff2 = correct_seneor_value(left_end, left_end_min, left_end_max) - correct_seneor_value(right_end, right_end_min, right_end_max)
         # 補正したセンサ値を合算
-        diff = diff1 + diff2
+        diff = diff1 / 2 + diff2
         print(diff1, diff2)
         set_motor_speed(100+diff, 100-diff)
         time.sleep(0.1) # 0.1秒毎にセンサ値とモータの回転角度を更新
