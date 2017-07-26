@@ -7,11 +7,6 @@ def get_line_sensor_data():
     with open('/dev/rtlightsensor0','r') as f:
         return map(int, f.readline().split())
 
-# スイッチの入力データを返す関数を用意
-def get_switch_input(swnum):
-    with open('/dev/rtswitch'+str(swnum),'r') as f:
-        return not(int(f.readline()))
-
 # デバイスファイルを通してモータの回転角度を指定する関数を用意
 def set_motor_speed(left, right):
     with open('/dev/rtmotor_raw_l0','w') as lf, open('/dev/rtmotor_raw_r0','w') as rf:
@@ -22,6 +17,11 @@ def set_motor_speed(left, right):
 def set_motor_power(mode):
     with open('/dev/rtmotoren0','w') as f:
         f.write('1' if mode else '0')
+
+# スイッチの入力データを返す関数を用意
+def get_switch_input(swnum):
+    with open('/dev/rtswitch'+str(swnum),'r') as f:
+        return not(int(f.readline()))
 
 if __name__ == '__main__':
     while not get_switch_input(False): # SW0が押されるまで待機
