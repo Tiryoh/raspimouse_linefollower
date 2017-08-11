@@ -24,11 +24,11 @@ def get_switch_input(swnum):
         return not(int(f.readline()))
 
 if __name__ == '__main__':
-    while not get_switch_input(False): # SW0が押されるまで待機
+    while not get_switch_input(0): # SW0が押されるまで待機
         print("ready")
         time.sleep(0.1)
     set_motor_power(True)
-    while not get_switch_input(True): # SW1が押されたら止める
+    while not get_switch_input(1): # SW1が押されたら止める
         left_end, left, right, right_end = get_line_sensor_data()
         print(left, right)
         diff = (left - right)/10
