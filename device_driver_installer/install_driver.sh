@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+[ -z $(uname -m | grep armv7l) ] && { echo "Run this script on Raspberry Pi"; exit 0; }
+
 if [ -e $HOME/RaspberryPiMouse/src/drivers/rtmouse.ko ]; then
 	DRIVER=$HOME/RaspberryPiMouse/src/drivers/rtmouse.ko
 else
