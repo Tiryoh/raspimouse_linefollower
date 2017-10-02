@@ -11,7 +11,13 @@ else
 	DRIVER=$HOME/RaspberryPiMouse/lib/Pi2B+/`uname -r`/rtmouse.ko
 fi
 
-sudo insmod $DRIVER
-sleep 1
-[ -w /dev/rtled0 ] || sudo chmod 666 /dev/rt*
+if [ -z $(whoami | grep root) ]; then
+	sudo /sbin/insmod $DRIVER
+	sleep 1
+	[ -w /dev/rtled0 ] || sudo chmod 666 /dev/rt*
+else
+	/sbin/insmod $DRIVER
+	sleep 1
+	[ -w /dev/rtled0 ] || chmod 666 /dev/rt*
+fi
 echo 0 > /dev/rtmotoren0
